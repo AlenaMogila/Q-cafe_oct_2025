@@ -1,0 +1,38 @@
+<!-- Сохрани как randomizer.html и открой в браузере -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Рандомайзер позиций</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        button { padding: 10px; margin: 5px; }
+        #result { margin-top: 20px; padding: 15px; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h2>🎲 Рандомайзер позиций</h2>
+    
+    <div>
+        <button onclick="assignRandom()">Раздать позиции</button>
+        <button onclick="location.reload()">Сбросить</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        const positions = ["🎓 Студент", "👨‍🏫 Преподаватель", "🏢 Администрация", 
+                          "💻 Разработчик", "👨‍👩‍👧 Родитель", "⚖️ Регулятор"];
+        
+        function assignRandom() {
+            let shuffled = [...positions].sort(() => Math.random() - 0.5);
+            let resultHTML = "<h3>🎯 Распределение:</h3>";
+            
+            shuffled.forEach((pos, index) => {
+                resultHTML += `<p>Участник ${index + 1}: <strong>${pos}</strong></p>`;
+            });
+            
+            document.getElementById('result').innerHTML = resultHTML;
+        }
+    </script>
+</body>
+</html>
